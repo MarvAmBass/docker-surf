@@ -1,6 +1,6 @@
 FROM debian:stretch
 
-ENV WEBKITGTK_VERSION=2.20.2
+ENV WEBKITGTK_VERSION=2.21.3
 
 COPY install.sh /usr/local/bin/install.sh
 
@@ -56,11 +56,11 @@ RUN apt-get -q -y update \
  && sudo make install \
  \
  && cd \
- && bash -c "dpkg --list | grep '\-dev' | awk '{print $2}' | tr '\n' ' ' | sed 's/^/apt-get purge -y /g' | bash" \
+ ; bash -c "dpkg --list | grep '\-dev' | tr ' ' '\n' | grep '\-dev' | sed 's/^/apt-get purge -y /g' | bash" \
  \
- && rm -rf /root/* \
+ ; rm -rf /root/* \
  \
- && apt-get -q -y purge    wget \
+ ; apt-get -q -y purge    wget \
                           unzip \
                           \
                           git \
@@ -75,5 +75,5 @@ RUN apt-get -q -y update \
                           flex \
                           gtk-doc-tools \
  \
- && apt-get -q -y clean \
- && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+ ; apt-get -q -y clean \
+ ; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
