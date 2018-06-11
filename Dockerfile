@@ -50,6 +50,13 @@ RUN apt-get -q -y update \
  \
  && apt-get install -q -y libgcr-3-dev \
  \
+ && wget https://dl.suckless.org/tools/dmenu-4.8.tar.gz \
+ && tar xvf dmenu*.tar.gz \
+ && cd dmenu-*/ \
+ && make \
+ && sudo make install \
+ && cd .. \
+ \
  && git clone https://git.suckless.org/surf \
  && cd surf \
  && make \
