@@ -45,6 +45,12 @@ RUN apt-get -q -y update \
  && sh -c 'while ! ./ninja; do sleep 1; done' \
  && sudo ninja install \
  \
+ && strip /usr/local/lib/* \
+ && strip /usr/local/libexec/webkit*/* \
+ && strip /usr/local/bin/* \
+ \
+ && rm -rf /usr/share/doc/* /usr/share/man/* /usr/share/midi/* /usr/share/GeoIP/* /usr/share/perl/* /usr/share/cmake-* \
+ \
  && cd \
  && cd webkitgtk*/ \
  \
@@ -81,6 +87,8 @@ RUN apt-get -q -y update \
                           bison \
                           flex \
                           gtk-doc-tools \
+                          \
+                          perl \
  \
  ; apt-get -q -y clean \
  ; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
