@@ -48,7 +48,7 @@ RUN apt-get -q -y update \
  && cd \
  && cd webkitgtk*/ \
  \
- && apt-get install -q -y libgcr-3-dev \
+ && apt-get install -q -y libgcr-3-dev x11-utils \
  \
  && wget https://dl.suckless.org/tools/dmenu-4.8.tar.gz \
  && tar xvf dmenu*.tar.gz \
