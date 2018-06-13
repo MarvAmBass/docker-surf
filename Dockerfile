@@ -88,9 +88,9 @@ RUN apt-get -q -y update \
  ; apt-get -q -y clean \
  ; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
  \
- && strip /usr/local/lib/* \
- && strip /usr/local/libexec/webkit*/* \
- && strip /usr/local/bin/* \
+ ; strip /usr/local/lib/* \
+ ; strip /usr/local/libexec/webkit*/* \
+ ; strip /usr/local/bin/* \
  \
- && rm -rf /usr/share/doc/* /usr/share/man/* /usr/share/midi/* /usr/share/GeoIP/* /usr/share/perl/* /usr/share/cmake-* \
- && rm -rf /usr/lib/python*
+ ; rm -rf /usr/share/doc/* /usr/share/man/* /usr/share/midi/* /usr/share/GeoIP/* /usr/share/perl/* /usr/share/cmake-* \
+ ; rm -rf /usr/lib/python*
