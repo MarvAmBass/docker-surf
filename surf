@@ -1,0 +1,5 @@
+#!/bin/sh
+[ $(id -u) -eq 0 ] && exit 1
+xhost +local:
+sudo touch /etc/asound.conf
+sudo docker run -ti --rm -v /tmp/.X11-unix:/tmp/.X11-unix -v $HOME/.surf:/.surf -v /etc/asound.conf:/etc/asound.conf:ro --device /dev/snd -e DISPLAY=$DISPLAY --user $(id -u):$(id -g) --group-add audio marvambass/surf:1.0.0 surf "$@"
